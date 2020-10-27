@@ -34,7 +34,7 @@ var layer =layui.layer
             console.log(data);
             $.ajax({
                   method:'POST',
-                  url:testUrl +'/api/reguser',
+                  url:'/api/reguser',
                   data:data,
                   success:function(res){
                   if(res.status !== 0){
@@ -59,7 +59,7 @@ var layer =layui.layer
             let data=$(this).serialize()
             // 进行数据提交
             $.ajax({
-                  url:testUrl+'/api/login',
+                  url:'/api/login',
                   method:"POST",
                   data:data,
                   success:function(res){
