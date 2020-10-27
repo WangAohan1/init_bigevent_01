@@ -25,25 +25,55 @@ $(function () {
                   }
             }
       })
-
+var layer =layui.layer
       // 注册账号事件 用ajax
       $('#form_reg').on('submit',function(e) {
             e.preventDefault()
-            // console.log(123);
+            console.log(123);
             var data=$(this).serialize()
             console.log(data);
             $.ajax({
                   method:'POST',
-                  url:'http://ajax.frontend.itheima.net/api/reguser',
+                  url:testUrl +'/api/reguser',
                   data:data,
-                  succsee:function(res){
+                  success:function(res){
                   if(res.status !== 0){
                         // return console.log(res.message);
-                        console.log(123);
-                  }else{
-                        console.log(注册成功);
-                  }
+                  //   return    console.log(123);
+                  return layer.msg(res.message, {icon: 6}); 
+                  };
+                  // alert(res.message)
+                 layer.msg(res.message)
+                  // 成功的时候设置自动点击事件跳转到登录页面 并且清空输入框
+                  $('#link_log').trigger('click')
+                  $('#form_reg')[0].reset()
                   }
             })
       })
+
+
+      // 登录事件
+      $('#form_login').on('submit',function(e){
+            e.preventDefault()
+            // 获取表单信息
+            let data=$(this).serialize()
+            // 进行数据提交
+            $.ajax({
+                  url:testUrl+'/api/login',
+                  method:"POST",
+                  data:data,
+                  success:function(res){
+                        // console.log(res);
+                        if(res.status !==0){
+                              return layer.msg(res.message,{icon: 5})
+                        };
+                        layer.msg(res.message,{icon: 6})
+                        // 然后把数据存在localStrage里面
+                        localStorage.setItem('token',res.token)
+                        // 跳转到首页
+                        location.href='/index.html'
+                  }
+            })
+      })
+
 })

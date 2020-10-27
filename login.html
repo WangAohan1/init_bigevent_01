@@ -20,19 +20,19 @@
         <div class="title"></div>
     <div class="log_box">
             <!-- 登录模块 -->
-            <form class="layui-form" action="">
+            <form class="layui-form" id="form_login" action="">
                 <!-- 用户名 -->
                 <div class="layui-form-item">
                     <label class="layui-form-label"></label>
                     <i class="layui-icon layui-icon-username"></i>  
-                    <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                    <input type="text" name="username" value="4564561" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
                         class="layui-input">
                 </div>
                 <!-- 密码 -->
                 <div class="layui-form-item">
                     <label class="layui-form-label"></label>
                     <i class="layui-icon layui-icon-password"></i> 
-                    <input type="text" name="password" required lay-verify="required|pass" placeholder="请输入密码" autocomplete="off"
+                    <input type="text" name="password" value="111111" required lay-verify="required|pass" placeholder="请输入密码" autocomplete="off"
                         class="layui-input">
                 </div>
                 <!-- 按钮 -->
@@ -94,6 +94,9 @@
     <script src="/assets/lib/layui/layui.all.js"></script>
     <!-- 在底部引入jquery -->
     <script src="/assets/lib/jquery.js"></script>
+    <!-- 引入封装的ajax不需写代码的js -->
+    <script src="/assets/js/baseAPI.js"></script>
+    <!-- 引入自己的js -->
     <script src="/assets/js/login.js"></script>
 </body>
 
