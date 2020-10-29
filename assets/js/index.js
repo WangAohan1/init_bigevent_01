@@ -1,5 +1,14 @@
 $(function(){
     getUserinfo()
+
+    // 点击退出
+    var layer=layui.layer
+    $('#goLogin').on('click',function(){
+        layer.confirm('确定退出吗亲?', {icon: 3, title:'提示'}, function(index){
+            location.href='/login.html'
+            layer.close(index);
+          });
+    })
 })
 
 // 获取用户的信息
