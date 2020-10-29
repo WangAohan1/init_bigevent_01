@@ -6,6 +6,7 @@ $(function(){
     $('#goLogin').on('click',function(){
         layer.confirm('确定退出吗亲?', {icon: 3, title:'提示'}, function(index){
             location.href='/login.html'
+            localStorage.removeItem('token')
             layer.close(index);
           });
     })
