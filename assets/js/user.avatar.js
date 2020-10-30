@@ -27,8 +27,7 @@ $(function () {
           return "请选择图片"
         } else {
           // 2. 将文件，转化为路径
-          var imgURL = URL.createObjectURL(files
-              )
+          var imgURL = URL.createObjectURL(files)
           // 3. 重新初始化裁剪区域
           $('#image')
             .cropper('destroy') // 销毁旧的裁剪区域
@@ -38,6 +37,7 @@ $(function () {
 
       })
 
+      
       // 上传图片
       $('#btUpload').on('click',function(){
         // 获取图片的64位字符串
