@@ -121,16 +121,16 @@ $(function () {
             title: '提示'
         }, function (index) {
             $.ajax({
-                url:'/my/article/deletecate/' +id,
-                success:function(res){
-                if(res.status!==0){
-                    return "您删除失败"
-                };
-                "恭喜您删除成功"
-                // 获取成功就重新渲染页面
-                initBook()
-                // 关闭餐层
-            layer.close(index);
+                url: '/my/article/deletecate/' + id,
+                success: function (res) {
+                    if (res.status !== 0) {
+                        return "您删除失败"
+                    };
+                    "恭喜您删除成功"
+                    // 获取成功就重新渲染页面
+                    initBook()
+                    // 关闭餐层
+                    layer.close(index);
 
                 }
             })

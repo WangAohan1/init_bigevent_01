@@ -22,8 +22,6 @@ $.ajax({
     //     Authorization:localStorage.getItem('token'),
     // },
     success:function(res){
-        console.log(res);
-    
         // 进行判断是否获取成功
         if(res.status !==0){
             return layui.layer.msg(res.message)
@@ -41,7 +39,6 @@ $.ajax({
 
 // 进行渲染头像
 function renderAvatar(user){
-    console.log(123);
     // 有管理员名称就渲染管理员没有就渲染自己的名字
     var name =user.nickname || user.username
     console.log(name);

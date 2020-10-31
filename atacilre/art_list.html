@@ -2,41 +2,113 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- 引入layui的css -->
-    <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
-    <!-- 引入自己的css -->
-    <link rel="stylesheet" href="/assets/css/article/art_list.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 引入layui的css -->
+  <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
+  <!-- 引入自己的css -->
+  <link rel="stylesheet" href="/assets/css/article/art_list.css">
 </head>
 
 
 <body>
 
-    <div class="layui-card">
-        <div class="layui-card-header">文章列表</div>
-        <div class="layui-card-body">
+  <div class="layui-card">
+    <div class="layui-card-header">文章列表</div>
+    <div class="layui-card-body">
       <!-- 分页筛选 -->
-      <!-- 分页列表 -->
-      <!-- 分页区域 -->
+      <form class="layui-form"id="form-search">
+        <!-- 1 -->
+        <div class="layui-form-item layui-inline">
+          <select name="cate_id" >
+            <option value="">所有分类</option>
+          </select>
         </div>
-      </div>
+        <!-- 2 -->
+        <div class="layui-form-item layui-inline">
+          <select name="state" lay-verify="">
+            <option value="">所有状态</option>
+            <option value="已发布">已发布</option>
+            <option value="草稿">草稿</option>
+          </select>
+        </div>
+        <!-- 3 -->
+        <div class="layui-form-item layui-inline">
+          <button class="layui-btn" lay-submit lay-filter="formDemo">筛选</button>
+        </div>
+      </form>
+
+      <!-- 分页列表 -->
+      <table class="layui-table">
+        <colgroup>
+          <col>
+          <col width="190">
+          <col width="250">
+          <col width="190">
+          <col width="190">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>文章标题</th>
+            <th>分类</th>
+            <th>发布时间</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+
+     <!-- 分页区域 -->
+     <div id="pageBox"></div>
+    </div>
+     
+
+  </div>
 
 
+  <!-- 创建一个表格模板引擎 -->
+  <script type="text/html" id="tmp-table">
+    {{each data}}
+    <tr>
+      <td>{{$value.title}}</td>
+      <td>{{$value.cate_name}}</td>
+      <td>{{$value.pub_date|dataFormat}}</td>
+      <td>{{$value.state}}</td>
+      <td>
+        <button type="button" class="layui-btn layui-btn-xs">编辑</button>
+        <button type="button" class="layui-btn layui-btn-danger layui-btn-xs btn-delete"
+          data-id="{{$value.Id}}">删除</button>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+  <!-- 创建一个下拉选项卡模板引擎 -->
+  <script type="text/html" id="tmp-cate">
+    <!-- 表头无需渲染所以提取出来 -->
+    <option value="">所有分类</option>  
 
-    <!-- 引入jquery -->
-    <script src="/assets/lib/jquery.js"></script>
-    <script src="/style.js"></script>
+    {{each data item}}
+    <option value="{{item.Id}}">{{item.name}}</option>
+    {{/each}}
+  </script>
 
-    <!-- 引入layui的js -->
-    <script src="/assets/lib/layui/layui.all.js"></script>
-    <!-- 引入baseAPI -->
-    <script src="/assets/js/baseAPI.js"></script>
-    <!-- 引入模板引擎 -->
-    <script src="/assets/lib/template-web.js"></script>
-    <!-- 引入自己的js -->
-    <script src="/assets/js/article/art_list.js"></script>
+  <!-- 引入jquery -->
+  <script src="/assets/lib/jquery.js"></script>
+
+  <script src="/style.js"></script>
+
+  <!-- 引入layui的js -->
+  <script src="/assets/lib/layui/layui.all.js"></script>
+  <!-- 引入baseAPI -->
+  <script src="/assets/js/baseAPI.js"></script>
+  <!-- 引入模板引擎 -->
+  <script src="/assets/lib/template-web.js"></script>
+  <!-- 引入自己的js -->
+  <script src="/assets/js/article/art_list.js"></script>
 
 
 </body>
